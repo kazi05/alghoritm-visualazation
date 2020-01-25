@@ -10,4 +10,10 @@ import Foundation
 
 class VisualzationPresenter {
     
+    private weak var view: VisualzationView?
+    
+    func attach(view: VisualzationView) {
+        self.view = view
+    }
+    
 }

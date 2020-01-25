@@ -9,11 +9,18 @@
 import UIKit
 
 class VisualazationViewController: UIViewController {
+    
+    private let presenter = VisualzationPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        presenter.attach(view: self)
     }
 
+}
+
+// MARK: - View methods
+
+extension VisualazationViewController: VisualzationView {
+    
 }

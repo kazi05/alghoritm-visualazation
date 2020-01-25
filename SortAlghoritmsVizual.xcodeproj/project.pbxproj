@@ -14,6 +14,7 @@
 		2CD47D7223DCB098007D4315 /* VisualazationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D7123DCB098007D4315 /* VisualazationViewController.swift */; };
 		2CD47D7423DCB0A7007D4315 /* VisualzationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D7323DCB0A7007D4315 /* VisualzationView.swift */; };
 		2CD47D7623DCB0AF007D4315 /* VisualzationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D7523DCB0AF007D4315 /* VisualzationPresenter.swift */; };
+		2CD47D7923DCB29B007D4315 /* VisualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D7823DCB29B007D4315 /* VisualView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2CD47D7123DCB098007D4315 /* VisualazationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualazationViewController.swift; sourceTree = "<group>"; };
 		2CD47D7323DCB0A7007D4315 /* VisualzationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualzationView.swift; sourceTree = "<group>"; };
 		2CD47D7523DCB0AF007D4315 /* VisualzationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualzationPresenter.swift; sourceTree = "<group>"; };
+		2CD47D7823DCB29B007D4315 /* VisualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				2CD47D5C23DCB052007D4315 /* AppDelegate.swift */,
-				2CD47D7023DCB07C007D4315 /* Module */,
+				2CD47D7023DCB07C007D4315 /* Visuallaztion Module */,
 				2CD47D6223DCB052007D4315 /* Main.storyboard */,
 				2CD47D6523DCB054007D4315 /* Assets.xcassets */,
 				2CD47D6723DCB054007D4315 /* LaunchScreen.storyboard */,
@@ -68,14 +70,23 @@
 			path = SortAlghoritmsVizual;
 			sourceTree = "<group>";
 		};
-		2CD47D7023DCB07C007D4315 /* Module */ = {
+		2CD47D7023DCB07C007D4315 /* Visuallaztion Module */ = {
 			isa = PBXGroup;
 			children = (
+				2CD47D7723DCB279007D4315 /* Custom View */,
 				2CD47D7123DCB098007D4315 /* VisualazationViewController.swift */,
 				2CD47D7323DCB0A7007D4315 /* VisualzationView.swift */,
 				2CD47D7523DCB0AF007D4315 /* VisualzationPresenter.swift */,
 			);
-			path = Module;
+			path = "Visuallaztion Module";
+			sourceTree = "<group>";
+		};
+		2CD47D7723DCB279007D4315 /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				2CD47D7823DCB29B007D4315 /* VisualView.swift */,
+			);
+			path = "Custom View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +163,7 @@
 				2CD47D5D23DCB052007D4315 /* AppDelegate.swift in Sources */,
 				2CD47D7423DCB0A7007D4315 /* VisualzationView.swift in Sources */,
 				2CD47D7223DCB098007D4315 /* VisualazationViewController.swift in Sources */,
+				2CD47D7923DCB29B007D4315 /* VisualView.swift in Sources */,
 				2CD47D7623DCB0AF007D4315 /* VisualzationPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
