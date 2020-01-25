@@ -38,11 +38,11 @@ class VisualazationAnimationView: UIView {
         self.algorithm?.swapCompletion = { [unowned self] (high, low) in
             self.indexesArray.swapItems(itemAtIndex: high, withItemAtIndex: low)
             self.visualViews.swapItems(itemAtIndex: high, withItemAtIndex: low)
-            
+
             DispatchQueue.main.async { [unowned self] in
                 let lowLayer = self.visualViews[low]
                 let highLayer = self.visualViews[high]
-                self.swapLayers(firstLayer: lowLayer, secondLayer: highLayer)
+                self.swapLayers(lowLayer, highLayer)
             }
         }
         
@@ -55,28 +55,21 @@ class VisualazationAnimationView: UIView {
     
     func startSorting() {
         if sortProcessing {
-            cancel()
             sortProcessing = false
             return
         }
-        
+
         if sortCompleted {
             setIndexes()
             sortCompleted = false
         }
-        
+
         sortProcessing = true
         algorithm?.startSort(array: indexesArray)
     }
     
-    func cancel() {
-        if !sortProcessing { return }
-        
-        algorithm?.cancel()
-        setIndexes()
-    }
-    
     private func setIndexes() {
+        sortCompleted = false
         indexesArray = []
         indexesArray = (1...viewsCount).shuffled()
         setNeedsDisplay()
@@ -90,6 +83,7 @@ fileprivate extension VisualazationAnimationView {
     
     func setIndexLayers(rect: CGRect) {
         visualViews.forEach { $0.removeFromSuperlayer() }
+        visualViews = []
         
         let minHeight = rect.height / CGFloat(viewsCount)
         let padding = 1
@@ -127,7 +121,7 @@ fileprivate extension VisualazationAnimationView {
 
 fileprivate extension VisualazationAnimationView {
     
-    private func swapLayers(firstLayer: VisualView, secondLayer: VisualView) {
+    private func swapLayers(_ firstLayer: VisualView, _ secondLayer: VisualView) {
         let firstInitial = firstLayer.frame.origin.x
         let secondInitial = secondLayer.frame.origin.x
         print("Swap layers index: \(firstLayer.index) \(secondLayer.index)")

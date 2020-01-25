@@ -32,13 +32,13 @@ class VisualazationViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         view.addGestureRecognizer(tapGesture)
         
-        sortAnimationView.viewsCount = 20
+        sortAnimationView.viewsCount = 100
         
         sortAnimationView.completion = { [unowned self] completed in
             self.isSorting = false
         }
         
-        let insertionSort = AlgorithmFactory.getAlgorithm(of: .insertion)
+        let insertionSort = AlgorithmFactory.getAlgorithm(of: .quick)
         sortAnimationView.set(algorithm: insertionSort)
     }
     
@@ -47,20 +47,17 @@ class VisualazationViewController: UIViewController {
     }
     
     private func handleStartOrCancelSorting() {
-        let buttonString = !isSorting ? "Отмена" : "Начать"
-        startCancelButton.setTitle(buttonString, for: .normal)
+        startCancelButton.isEnabled = isSorting
         
         if !isSorting {
             presenter.startSorting()
-        } else {
-            presenter.cancelSorting()
         }
     }
     
     @IBAction func actionAplyViewCount(_ sender: Any) {
         guard let countText = viewsCountTextField.text,
                 let viewsCount = Int(countText) else { return }
-        
+        aplyButton.isEnabled = false
         presenter.setViewsCount(count: viewsCount)
     }
     
@@ -71,7 +68,7 @@ class VisualazationViewController: UIViewController {
 fileprivate extension VisualazationViewController {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if textField.text == "0" || textField.text?.count ?? 0 > 4 {
+        if let number = Int(textField.text!), number <= 5 || textField.text?.count ?? 0 > 4 {
             aplyButton.isEnabled = false
         }
         
@@ -80,6 +77,7 @@ fileprivate extension VisualazationViewController {
     
     @objc func viewTapped() {
         view.endEditing(true)
+        aplyButton.isEnabled = false
     }
     
 }
@@ -90,10 +88,6 @@ extension VisualazationViewController: VisualzationView {
     
     func startSorting() {
         sortAnimationView.startSorting()
-    }
-    
-    func cancelSorting() {
-        sortAnimationView.cancel()
     }
     
     func setViewsCount(count: Int) {

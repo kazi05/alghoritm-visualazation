@@ -8,49 +8,32 @@
 
 import Foundation
 
-class InsertionSort: Algorithm {
+class InsertionSort: QueueOperation, Algorithm {
     
     var swapCompletion: SwapCompletion?
     
     var sortCompleted: SortCompleted?
     
-    private let queue = DispatchQueue.global(qos: .userInitiated)
-    private let group = DispatchGroup()
-    private var workItem: DispatchWorkItem?
-    
     func startSort(array: Array<Int>) {
-        let length = array.count
+        var items = array
+        let length = items.count
         
-        workItem = DispatchWorkItem(block: { [unowned self] in
+        operationBlock(execute: { [unowned self] in
+            
             for i in 1..<length {
-                self.group.enter()
+                
                 for j in stride(from: i, to: 0, by: -1) {
-                    usleep(1000)
-                    if array[j] < array[j - 1] {
+                    usleep(loopIterationDelay)
+                    if items[j] < items[j - 1] {
+                        items.swapItems(itemAtIndex: j, withItemAtIndex: j - 1)
                         self.swapCompletion?(j, j - 1)
                     } else {
                         break
                     }
                 }
-                self.group.leave()
-                self.group.wait()
             }
-            
-            self.group.notify(queue: .main) { [unowned self] in
-                self.sortCompleted?(true)
-            }
-        })
-        
-        guard let item = workItem else { return }
-        
-        queue.async(execute: item)
+        }) { [unowned self] in
+            self.sortCompleted?(true)
+        }
     }
-    
-    func cancel() {
-        guard let item = workItem else { return }
-        
-        item.cancel()
-        workItem = nil
-    }
-    
 }

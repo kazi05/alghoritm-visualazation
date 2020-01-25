@@ -10,6 +10,5 @@ import UIKit
 
 protocol VisualzationView: class {
     func startSorting()
-    func cancelSorting()
     func setViewsCount(count: Int)
 }

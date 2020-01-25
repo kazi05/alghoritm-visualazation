@@ -8,38 +8,34 @@
 
 import Foundation
 
-class SelectionSort: DispatchQueueOperation, Algorithm {
+class SelectionSort: QueueOperation, Algorithm {
     
     var swapCompletion: SwapCompletion?
     
     var sortCompleted: SortCompleted?
     
     func startSort(array: Array<Int>) {
+        var items = array
+        let length = items.count
         
-        workItem { [unowned self] in
-            let length = array.count
+        operationBlock(execute: { [unowned self] in
             
             for i in 0..<length {
-                self.dispatchGroup.enter()
+                usleep(loopIterationDelay)
+                
                 var minIndex = i
                 for j in i+1..<length {
-                    usleep(1000)
-                    if array[j] < array[minIndex] {
+                    if items[j] < items[minIndex] {
                         minIndex = j
                     }
                 }
-                self.swapCompletion?(i, minIndex)
-                self.dispatchGroup.leave()
-                self.dispatchGroup.wait()
+                
+                items.swapItems(itemAtIndex: i, withItemAtIndex: minIndex)
+                self.swapCompletion?(minIndex, i)
             }
             
-            self.dispatchGroup.notify(queue: .main) {
-                self.sortCompleted?(true)
-            }
+        }) { [unowned self] in
+            self.sortCompleted?(true)
         }
-    }
-    
-    func cancel() {
-        cancelOperation()
     }
 }

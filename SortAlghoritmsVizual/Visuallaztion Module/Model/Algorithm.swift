@@ -15,5 +15,4 @@ protocol Algorithm {
     var swapCompletion: SwapCompletion? { get set }
     var sortCompleted: SortCompleted? { get set }
     func startSort(array: Array<Int>)
-    func cancel()
 }

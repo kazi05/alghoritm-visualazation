@@ -11,6 +11,7 @@ import Foundation
 enum SortType: String {
     case insertion = "Сортировка вставками"
     case selection = "Сортировка выбором"
+    case quick = "Быстрая сортировка"
 }
 
 class AlgorithmFactory {
@@ -20,6 +21,7 @@ class AlgorithmFactory {
         switch type {
         case .insertion: return InsertionSort()
         case .selection: return SelectionSort()
+        case .quick: return QuickSort()
         }
         
     }

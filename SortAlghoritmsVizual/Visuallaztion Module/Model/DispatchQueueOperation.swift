@@ -8,26 +8,28 @@
 
 import Foundation
 
-class DispatchQueueOperation {
+class QueueOperation {
     
-    private let queue = DispatchQueue.global(qos: .userInitiated)
-    private var workItem: DispatchWorkItem?
+    private lazy var operationQueue: OperationQueue = {
+      var queue = OperationQueue()
+      queue.name = "Sort loop queue"
+      queue.maxConcurrentOperationCount = 1
+        queue.qualityOfService = .userInitiated
+      return queue
+    }()
     
-    let dispatchGroup = DispatchGroup()
+    private var operation: AsyncOperation?
     
-    func workItem(execute block: @escaping () -> Void) {
-        workItem = DispatchWorkItem(block: block)
+    func operationBlock(execute block: @escaping () -> Void, completion: @escaping () -> Void) {
+        operation = AsyncOperation(block)
         
-        guard let item = workItem else { return }
+        operation?.completionBlock = {
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
         
-        queue.async(execute: item)
-    }
-    
-    func cancelOperation() {
-        guard let item = workItem else { return }
-        
-        item.cancel()
-        workItem = nil
+        operationQueue.addOperation(operation!)
     }
     
 }

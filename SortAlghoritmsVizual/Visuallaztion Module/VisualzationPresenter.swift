@@ -20,10 +20,6 @@ class VisualzationPresenter {
         view?.startSorting()
     }
     
-    func cancelSorting() {
-        view?.cancelSorting()
-    }
-    
     func setViewsCount(count: Int) {
         view?.setViewsCount(count: count)
     }
