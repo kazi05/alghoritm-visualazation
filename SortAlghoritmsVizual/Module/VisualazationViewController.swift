@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  VisualazationViewController.swift
 //  SortAlghoritmsVizual
 //
 //  Created by Kazim Gadjiev on 25/01/2020.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class VisualazationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
-
 }
-
