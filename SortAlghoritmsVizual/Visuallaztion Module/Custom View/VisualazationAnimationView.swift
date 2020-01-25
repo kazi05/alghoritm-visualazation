@@ -17,6 +17,7 @@ class VisualazationAnimationView: UIView {
     }
     
     private(set) var algorithm: Algorithm?
+    var completion: SortCompleted?
     
     private var indexesArray = [Int]()
     private var visualViews: [VisualView] = []
@@ -24,7 +25,7 @@ class VisualazationAnimationView: UIView {
     private var sortProcessing = false
     
     override func draw(_ rect: CGRect) {
-        if indexesArray.isEmpty && !sortCompleted {
+        if indexesArray.isEmpty {
             return
         }
         
@@ -37,14 +38,18 @@ class VisualazationAnimationView: UIView {
         self.algorithm?.swapCompletion = { [unowned self] (high, low) in
             self.indexesArray.swapItems(itemAtIndex: high, withItemAtIndex: low)
             self.visualViews.swapItems(itemAtIndex: high, withItemAtIndex: low)
-            let lowLayer = self.visualViews[low]
-            let highLayer = self.visualViews[high]
-            self.swapLayers(firstLayer: lowLayer, secondLayer: highLayer)
+            
+            DispatchQueue.main.async { [unowned self] in
+                let lowLayer = self.visualViews[low]
+                let highLayer = self.visualViews[high]
+                self.swapLayers(firstLayer: lowLayer, secondLayer: highLayer)
+            }
         }
         
         self.algorithm?.sortCompleted = { [unowned self] completed in
             self.sortCompleted = completed
             self.sortProcessing = false
+            self.completion?(completed)
         }
     }
     
@@ -55,12 +60,16 @@ class VisualazationAnimationView: UIView {
             return
         }
         
-        setIndexes()
+        if sortCompleted {
+            setIndexes()
+            sortCompleted = false
+        }
+        
         sortProcessing = true
         algorithm?.startSort(array: indexesArray)
     }
     
-    private func cancel() {
+    func cancel() {
         if !sortProcessing { return }
         
         algorithm?.cancel()

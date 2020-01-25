@@ -10,6 +10,7 @@ import Foundation
 
 enum SortType: String {
     case insertion = "Сортировка вставками"
+    case selection = "Сортировка выбором"
 }
 
 class AlgorithmFactory {
@@ -18,6 +19,7 @@ class AlgorithmFactory {
         
         switch type {
         case .insertion: return InsertionSort()
+        case .selection: return SelectionSort()
         }
         
     }

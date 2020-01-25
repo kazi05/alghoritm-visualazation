@@ -20,6 +20,8 @@
 		2CD47D8023DCB4DF007D4315 /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D7F23DCB4DF007D4315 /* InsertionSort.swift */; };
 		2CD47D8323DCB52D007D4315 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D8223DCB52D007D4315 /* Array+Extension.swift */; };
 		2CD47D8623DCCDEE007D4315 /* AlgorithmFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D8523DCCDEE007D4315 /* AlgorithmFactory.swift */; };
+		2CD47D8823DCD452007D4315 /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D8723DCD452007D4315 /* SelectionSort.swift */; };
+		2CD47D8A23DCD4DE007D4315 /* DispatchQueueOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D8923DCD4DE007D4315 /* DispatchQueueOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		2CD47D7F23DCB4DF007D4315 /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
 		2CD47D8223DCB52D007D4315 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		2CD47D8523DCCDEE007D4315 /* AlgorithmFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmFactory.swift; sourceTree = "<group>"; };
+		2CD47D8723DCD452007D4315 /* SelectionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
+		2CD47D8923DCD4DE007D4315 /* DispatchQueueOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +101,8 @@
 		2CD47D7723DCB279007D4315 /* Custom View */ = {
 			isa = PBXGroup;
 			children = (
-				2CD47D7823DCB29B007D4315 /* VisualView.swift */,
 				2CD47D7A23DCB366007D4315 /* VisualazationAnimationView.swift */,
+				2CD47D7823DCB29B007D4315 /* VisualView.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -107,7 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				2CD47D7D23DCB3C9007D4315 /* Algorithm.swift */,
+				2CD47D8923DCD4DE007D4315 /* DispatchQueueOperation.swift */,
 				2CD47D7F23DCB4DF007D4315 /* InsertionSort.swift */,
+				2CD47D8723DCD452007D4315 /* SelectionSort.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,9 +206,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CD47D5D23DCB052007D4315 /* AppDelegate.swift in Sources */,
+				2CD47D8A23DCD4DE007D4315 /* DispatchQueueOperation.swift in Sources */,
 				2CD47D8023DCB4DF007D4315 /* InsertionSort.swift in Sources */,
 				2CD47D7423DCB0A7007D4315 /* VisualzationView.swift in Sources */,
 				2CD47D8323DCB52D007D4315 /* Array+Extension.swift in Sources */,
+				2CD47D8823DCD452007D4315 /* SelectionSort.swift in Sources */,
 				2CD47D7223DCB098007D4315 /* VisualazationViewController.swift in Sources */,
 				2CD47D7923DCB29B007D4315 /* VisualView.swift in Sources */,
 				2CD47D7B23DCB366007D4315 /* VisualazationAnimationView.swift in Sources */,

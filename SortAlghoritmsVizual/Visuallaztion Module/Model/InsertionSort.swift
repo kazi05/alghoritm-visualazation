@@ -23,9 +23,9 @@ class InsertionSort: Algorithm {
         
         workItem = DispatchWorkItem(block: { [unowned self] in
             for i in 1..<length {
-                usleep(1000)
                 self.group.enter()
                 for j in stride(from: i, to: 0, by: -1) {
+                    usleep(1000)
                     if array[j] < array[j - 1] {
                         self.swapCompletion?(j, j - 1)
                     } else {

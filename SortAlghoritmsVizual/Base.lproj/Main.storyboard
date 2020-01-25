@@ -16,13 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="via-bk-Ymh">
+                                <rect key="frame" x="157" y="115" width="100" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Okn-zk-KBD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите количество чисел" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iu5-KK-6YL">
                                 <rect key="frame" x="99.5" y="84" width="215" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zM2-nh-kk4">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zM2-nh-kk4" customClass="VisualazationAnimationView" customModule="SortAlghoritmsVizual" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="248" width="414" height="400"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -39,14 +47,13 @@
                                     <action selector="actionStartCancelSorting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oEA-UJ-VNj"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="via-bk-Ymh">
-                                <rect key="frame" x="157" y="115" width="100" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="Okn-zk-KBD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeb-Mn-PZM">
+                                <rect key="frame" x="318" y="208" width="81" height="30"/>
+                                <state key="normal" title="Применить"/>
+                                <connections>
+                                    <action selector="actionAplyViewCount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b01-4b-r98"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -57,12 +64,15 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zM2-nh-kk4" secondAttribute="trailing" id="L00-XZ-Jgh"/>
                             <constraint firstItem="zM2-nh-kk4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Nh8-I2-N86"/>
                             <constraint firstItem="via-bk-Ymh" firstAttribute="top" secondItem="Iu5-KK-6YL" secondAttribute="bottom" constant="10" id="PSP-6Z-MEo"/>
+                            <constraint firstItem="xeb-Mn-PZM" firstAttribute="centerY" secondItem="qUK-LU-0bE" secondAttribute="centerY" id="Pn7-4g-gmk"/>
                             <constraint firstItem="via-bk-Ymh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tma-Dj-INL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xeb-Mn-PZM" secondAttribute="trailing" constant="15" id="UJn-Aj-1vG"/>
                             <constraint firstItem="zM2-nh-kk4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aMa-HK-PeP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="aplyButton" destination="xeb-Mn-PZM" id="YxD-hs-0CG"/>
                         <outlet property="sortAnimationView" destination="zM2-nh-kk4" id="AeO-tV-rPT"/>
                         <outlet property="startCancelButton" destination="qUK-LU-0bE" id="S4B-s4-A31"/>
                         <outlet property="viewsCountTextField" destination="via-bk-Ymh" id="e0w-GJ-RGT"/>
