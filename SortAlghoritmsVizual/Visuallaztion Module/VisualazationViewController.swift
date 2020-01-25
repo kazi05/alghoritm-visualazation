@@ -22,6 +22,7 @@ class VisualazationViewController: UIViewController {
     @IBOutlet weak var startCancelButton: UIButton!
     @IBOutlet weak var sortAnimationView: VisualazationAnimationView!
     @IBOutlet weak var aplyButton: UIButton!
+    @IBOutlet weak var algorithmsPickerView: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,17 +30,12 @@ class VisualazationViewController: UIViewController {
         
         viewsCountTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
+        algorithmsPickerView.delegate = self
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         view.addGestureRecognizer(tapGesture)
         
-        sortAnimationView.viewsCount = 100
-        
-        sortAnimationView.completion = { [unowned self] completed in
-            self.isSorting = false
-        }
-        
-        let insertionSort = AlgorithmFactory.getAlgorithm(of: .quick)
-        sortAnimationView.set(algorithm: insertionSort)
+        configureSortAnimationView()
     }
     
     @IBAction func actionStartCancelSorting(_ sender: Any) {
@@ -80,6 +76,45 @@ fileprivate extension VisualazationViewController {
         aplyButton.isEnabled = false
     }
     
+}
+
+// MARK: - UIPickerView delegate and data source
+
+extension VisualazationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return presenter.getNumberOfTypes()
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return presenter.getSortTypeTitle(at: row)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let sortAlgorithm = presenter.getSortTypeAlgorithm(at: row)
+        sortAnimationView.set(algorithm: sortAlgorithm)
+    }
+    
+}
+
+// MARK: - VisualazationAnimationView config
+
+fileprivate extension VisualazationViewController {
+    
+    func configureSortAnimationView() {
+        sortAnimationView.viewsCount = 100
+        
+        sortAnimationView.completion = { [unowned self] completed in
+            self.isSorting = false
+        }
+        
+        let initialAlgorithm = presenter.getSortType(at: 0)
+        let insertionSort = AlgorithmFactory.getAlgorithm(of: initialAlgorithm)
+        sortAnimationView.set(algorithm: insertionSort)
+    }
 }
 
 // MARK: - View methods

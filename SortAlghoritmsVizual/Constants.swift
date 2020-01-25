@@ -8,4 +8,4 @@
 
 import Foundation
 
-let loopIterationDelay = 1500
+let loopIterationDelay: UInt32 = 1500

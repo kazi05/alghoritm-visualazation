@@ -9,9 +9,18 @@
 import Foundation
 
 enum SortType: String {
+    
     case insertion = "Сортировка вставками"
     case selection = "Сортировка выбором"
     case quick = "Быстрая сортировка"
+    
+    var type: Algorithm {
+        switch self {
+        case .insertion: return InsertionSort()
+        case .selection: return SelectionSort()
+        case .quick: return QuickSort()
+        }
+    }
 }
 
 class AlgorithmFactory {

@@ -54,6 +54,9 @@
                                     <action selector="actionAplyViewCount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b01-4b-r98"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j57-mb-YFT">
+                                <rect key="frame" x="0.0" y="648" width="414" height="204"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -65,13 +68,18 @@
                             <constraint firstItem="zM2-nh-kk4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Nh8-I2-N86"/>
                             <constraint firstItem="via-bk-Ymh" firstAttribute="top" secondItem="Iu5-KK-6YL" secondAttribute="bottom" constant="10" id="PSP-6Z-MEo"/>
                             <constraint firstItem="xeb-Mn-PZM" firstAttribute="centerY" secondItem="qUK-LU-0bE" secondAttribute="centerY" id="Pn7-4g-gmk"/>
+                            <constraint firstItem="j57-mb-YFT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Szs-Ld-Z0I"/>
                             <constraint firstItem="via-bk-Ymh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tma-Dj-INL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xeb-Mn-PZM" secondAttribute="trailing" constant="15" id="UJn-Aj-1vG"/>
+                            <constraint firstItem="j57-mb-YFT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ujh-Lo-hx7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="j57-mb-YFT" secondAttribute="bottom" constant="10" id="X7R-Ay-bTA"/>
                             <constraint firstItem="zM2-nh-kk4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aMa-HK-PeP"/>
+                            <constraint firstItem="j57-mb-YFT" firstAttribute="top" secondItem="zM2-nh-kk4" secondAttribute="bottom" id="fIs-5n-C4k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="algorithmsPickerView" destination="j57-mb-YFT" id="XEL-2u-jdA"/>
                         <outlet property="aplyButton" destination="xeb-Mn-PZM" id="YxD-hs-0CG"/>
                         <outlet property="sortAnimationView" destination="zM2-nh-kk4" id="AeO-tV-rPT"/>
                         <outlet property="startCancelButton" destination="qUK-LU-0bE" id="S4B-s4-A31"/>

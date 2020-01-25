@@ -33,6 +33,7 @@ class VisualazationAnimationView: UIView {
     }
     
     func set(algorithm: Algorithm) {
+        self.algorithm = nil
         self.algorithm = algorithm
         
         self.algorithm?.swapCompletion = { [unowned self] (high, low) in
@@ -63,7 +64,7 @@ class VisualazationAnimationView: UIView {
             setIndexes()
             sortCompleted = false
         }
-
+        
         sortProcessing = true
         algorithm?.startSort(array: indexesArray)
     }
@@ -124,7 +125,7 @@ fileprivate extension VisualazationAnimationView {
     private func swapLayers(_ firstLayer: VisualView, _ secondLayer: VisualView) {
         let firstInitial = firstLayer.frame.origin.x
         let secondInitial = secondLayer.frame.origin.x
-        print("Swap layers index: \(firstLayer.index) \(secondLayer.index)")
+        
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         
