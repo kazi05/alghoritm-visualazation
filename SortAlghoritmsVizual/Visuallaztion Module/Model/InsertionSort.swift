@@ -8,28 +8,49 @@
 
 import Foundation
 
-class InsertionSort<T: Comparable>: Algorithm {
-    
-    typealias Array = T
+class InsertionSort: Algorithm {
     
     var swapCompletion: SwapCompletion?
     
     var sortCompleted: SortCompleted?
     
-    func startSort(array: inout [T]) {
-        var result = array
+    private let queue = DispatchQueue.global(qos: .userInitiated)
+    private let group = DispatchGroup()
+    private var workItem: DispatchWorkItem?
+    
+    func startSort(array: Array<Int>) {
+        let length = array.count
         
-        let length = result.count
-        
-        for i in 1..<length {
-            for j in stride(from: i, to: 0, by: -1) {
-                if result[j] < result[j - 1] {
-                    result.swapItems(itemAtIndex: j, withItemAtIndex: j - 1)
-                } else {
-                    break
+        workItem = DispatchWorkItem(block: { [unowned self] in
+            for i in 1..<length {
+                usleep(1000)
+                self.group.enter()
+                for j in stride(from: i, to: 0, by: -1) {
+                    if array[j] < array[j - 1] {
+                        self.swapCompletion?(j, j - 1)
+                    } else {
+                        break
+                    }
                 }
+                self.group.leave()
+                self.group.wait()
             }
-        }
+            
+            self.group.notify(queue: .main) { [unowned self] in
+                self.sortCompleted?(true)
+            }
+        })
+        
+        guard let item = workItem else { return }
+        
+        queue.async(execute: item)
+    }
+    
+    func cancel() {
+        guard let item = workItem else { return }
+        
+        item.cancel()
+        workItem = nil
     }
     
 }

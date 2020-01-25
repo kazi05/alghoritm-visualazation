@@ -8,13 +8,12 @@
 
 import Foundation
 
-typealias SwapCompletion = ((_ first: Int, _ seconds: Int) -> Void)
+typealias SwapCompletion = ((_ high: Int, _ low: Int) -> Void)
 typealias SortCompleted = ((Bool) -> Void)
 
 protocol Algorithm {
-    associatedtype Array
     var swapCompletion: SwapCompletion? { get set }
     var sortCompleted: SortCompleted? { get set }
-    func startSort(array: inout [Array])
-    
+    func startSort(array: Array<Int>)
+    func cancel()
 }

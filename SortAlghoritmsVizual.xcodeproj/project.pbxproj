@@ -19,6 +19,7 @@
 		2CD47D7E23DCB3C9007D4315 /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D7D23DCB3C9007D4315 /* Algorithm.swift */; };
 		2CD47D8023DCB4DF007D4315 /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D7F23DCB4DF007D4315 /* InsertionSort.swift */; };
 		2CD47D8323DCB52D007D4315 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D8223DCB52D007D4315 /* Array+Extension.swift */; };
+		2CD47D8623DCCDEE007D4315 /* AlgorithmFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD47D8523DCCDEE007D4315 /* AlgorithmFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		2CD47D7D23DCB3C9007D4315 /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		2CD47D7F23DCB4DF007D4315 /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
 		2CD47D8223DCB52D007D4315 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		2CD47D8523DCCDEE007D4315 /* AlgorithmFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				2CD47D5C23DCB052007D4315 /* AppDelegate.swift */,
+				2CD47D8423DCCDDB007D4315 /* Factory */,
 				2CD47D7023DCB07C007D4315 /* Visuallaztion Module */,
 				2CD47D8123DCB51E007D4315 /* Helpers */,
 				2CD47D6223DCB052007D4315 /* Main.storyboard */,
@@ -115,6 +118,14 @@
 				2CD47D8223DCB52D007D4315 /* Array+Extension.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2CD47D8423DCCDDB007D4315 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				2CD47D8523DCCDEE007D4315 /* AlgorithmFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +207,7 @@
 				2CD47D7923DCB29B007D4315 /* VisualView.swift in Sources */,
 				2CD47D7B23DCB366007D4315 /* VisualazationAnimationView.swift in Sources */,
 				2CD47D7623DCB0AF007D4315 /* VisualzationPresenter.swift in Sources */,
+				2CD47D8623DCCDEE007D4315 /* AlgorithmFactory.swift in Sources */,
 				2CD47D7E23DCB3C9007D4315 /* Algorithm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
