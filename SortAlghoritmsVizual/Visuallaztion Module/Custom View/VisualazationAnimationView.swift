@@ -10,6 +10,8 @@ import UIKit
 
 class VisualazationAnimationView: UIView {
     
+    //MARK: - Public properties
+    
     var viewsCount = 100 {
         didSet {
             setIndexes()
@@ -19,10 +21,14 @@ class VisualazationAnimationView: UIView {
     private(set) var algorithm: Algorithm?
     var completion: SortCompleted?
     
+    //MARK: - Private properties
+    
     private var indexesArray = [Int]()
     private var visualViews: [VisualView] = []
     private var sortCompleted = false
     private var sortProcessing = false
+    
+    //MARK: - Life cycle
     
     override func draw(_ rect: CGRect) {
         if indexesArray.isEmpty {
@@ -31,6 +37,8 @@ class VisualazationAnimationView: UIView {
         
         setIndexLayers(rect: rect)
     }
+    
+    //MARK: - Public methods
     
     func set(algorithm: Algorithm) {
         self.algorithm = nil

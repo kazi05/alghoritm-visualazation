@@ -10,6 +10,8 @@ import UIKit
 
 class VisualazationViewController: UIViewController {
     
+    //MARK: - Private properties
+    
     private let presenter = VisualzationPresenter()
     
     private var isSorting = false {
@@ -18,11 +20,15 @@ class VisualazationViewController: UIViewController {
         }
     }
     
+    //MARK: - IBOutlets
+    
     @IBOutlet weak var viewsCountTextField: UITextField!
     @IBOutlet weak var startCancelButton: UIButton!
     @IBOutlet weak var sortAnimationView: VisualazationAnimationView!
     @IBOutlet weak var aplyButton: UIButton!
     @IBOutlet weak var algorithmsPickerView: UIPickerView!
+    
+    //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +43,8 @@ class VisualazationViewController: UIViewController {
         
         configureSortAnimationView()
     }
+    
+    //MARK: - IBActions
     
     @IBAction func actionStartCancelSorting(_ sender: Any) {
         isSorting.toggle()
