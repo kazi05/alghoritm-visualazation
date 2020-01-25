@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol VisualzationView {
+protocol VisualzationView: class {
     
 }
